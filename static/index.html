@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海龟汤 · 侦探档案室</title>
+  <link rel="stylesheet" href="/css/style.css?v=4">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="case-header">
+      <div class="case-eyebrow">
+        <span class="eyebrow-line">CONFIDENTIAL INVESTIGATION RECORDS</span>
+        <span class="case-no">CASE FILE NO. 海龟汤-001</span>
+      </div>
+      <div class="case-title-row">
+        <div class="logo">海龟汤</div>
+        <div class="case-stamp" aria-hidden="true">TOP<br>SECRET</div>
+      </div>
+    </header>
+
+    <main id="page-list" class="page">
+      <section class="intro">
+        <div class="intro-paper">
+          <span class="paper-clip" aria-hidden="true">&#128206;</span>
+          <h1>选择一个案件开始推理</h1>
+          <p>阅读汤面，通过提问逼近真相。AI 裁判只会回答“是 / 否 / 是也不是 / 无关”。</p>
+        </div>
+      </section>
+      <section id="story-list" class="story-list"></section>
+    </main>
+
+    <main id="page-game" class="page" style="display:none;">
+      <div class="game-header">
+        <button id="back-btn" class="back-btn">返回案件列表</button>
+        <h1 id="game-title"></h1>
+      </div>
+      <div class="game-body">
+        <div class="left">
+          <section class="surface">
+            <div class="folder-tab">
+              <span>案件记录</span>
+            </div>
+            <div class="surface-inner">
+              <div class="surface-label">汤面</div>
+              <p id="surface-text"></p>
+            </div>
+          </section>
+          <section id="chat" class="chat"></section>
+          <section class="input-area">
+            <input id="question-input" type="text" maxlength="500">
+            <button id="send-btn">发送</button>
+          </section>
+          <div id="loading" class="loading" style="display:none;">
+            <span class="typing-light"></span>侦探正在整理档案……
+          </div>
+        </div>
+        <aside class="right">
+          <div class="corkboard">
+            <div class="corkboard-header">
+              <span class="pin" aria-hidden="true"></span>
+              <h3>侦探笔记板</h3>
+            </div>
+            <p id="clue-status" class="note-status">调查刚刚开始，软木板上还没有新便签……</p>
+            <div id="clue-list" class="clue-list"></div>
+            <div id="answer-section" class="answer-section locked">
+              <div class="confidential-stamp" aria-hidden="true">CONFIDENTIAL</div>
+              <p>继续追问，更多真相会浮出水面。</p>
+              <button disabled>揭开汤底</button>
+            </div>
+            <div id="answer-text" class="answer-text" style="display:none;">
+              <div class="answer-sheet">
+                <div class="sheet-holes">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="answer-content"></div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+  <script src="/js/app.js?v=5"></script>
+</body>
+</html>
