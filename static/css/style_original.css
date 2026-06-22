@@ -78,7 +78,7 @@ body::after {
   animation: drift2 22s ease-in-out infinite;
 }
 
-/* 纸张噪点纹理 */
+/* 纸张噪点纹理 —— 应用在主要容器上 */
 .paper-texture {
   background-image:
     url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
@@ -99,7 +99,7 @@ body::after {
 }
 
 /* =====================================
-   Container
+   Container（z-index: 1 位于粒子之上）
    ===================================== */
 .container {
   max-width: 1140px;
@@ -253,302 +253,7 @@ body::after {
 }
 
 /* =====================================
-   统计面板
-   ===================================== */
-.stats-panel {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 32px;
-}
-
-.stats-card {
-  background: var(--folder);
-  border: 1px solid var(--folder-dark);
-  border-radius: 4px;
-  padding: 20px 16px;
-  text-align: center;
-  box-shadow: 2px 3px 0 var(--shadow-soft);
-  transition: transform var(--transition-speed) ease;
-}
-
-.stats-card:hover {
-  transform: translateY(-2px);
-}
-
-.stats-number {
-  font-family: "Courier Prime", monospace;
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--red);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.stats-label {
-  font-family: "Courier Prime", monospace;
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: var(--ink-soft);
-  text-transform: uppercase;
-}
-
-/* =====================================
-   今日推荐
-   ===================================== */
-.featured-section {
-  margin-bottom: 32px;
-}
-
-.featured-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.featured-icon {
-  font-size: 18px;
-  color: var(--gold);
-}
-
-.featured-header h2 {
-  font-size: 18px;
-  letter-spacing: 2px;
-  color: var(--ink);
-}
-
-.featured-line {
-  flex: 1;
-  height: 1px;
-  background: var(--folder-dark);
-  margin-left: 8px;
-}
-
-.featured-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.featured-card {
-  position: relative;
-  background: var(--folder);
-  border: 1px solid var(--folder-dark);
-  border-left: 4px solid var(--gold);
-  border-radius: 0 4px 4px 0;
-  padding: 24px 22px 20px;
-  cursor: pointer;
-  transition: all var(--transition-speed) ease;
-  box-shadow: 2px 3px 0 var(--shadow-soft);
-}
-
-.featured-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 4px 6px 0 var(--shadow);
-}
-
-.featured-card::before {
-  content: "精选";
-  position: absolute;
-  top: -1px;
-  right: 16px;
-  background: var(--gold);
-  color: var(--paper);
-  font-family: "Courier Prime", monospace;
-  font-size: 10px;
-  letter-spacing: 1px;
-  padding: 3px 10px;
-  border-radius: 0 0 2px 2px;
-}
-
-.featured-card h3 {
-  font-size: 17px;
-  margin-bottom: 8px;
-  color: var(--ink);
-}
-
-.featured-card p {
-  font-size: 14px;
-  color: var(--ink-soft);
-  line-height: 1.6;
-}
-
-.featured-card .card-tags {
-  margin-top: 10px;
-}
-
-/* 进度标签 */
-.progress-badge {
-  display: inline-block;
-  font-family: "Courier Prime", monospace;
-  font-size: 10px;
-  letter-spacing: 0.5px;
-  padding: 2px 8px;
-  border-radius: 2px;
-  margin-left: 8px;
-  vertical-align: middle;
-}
-
-.progress-badge.solved {
-  background: rgba(90,138,90,0.15);
-  color: #4a7a4a;
-  border: 1px solid #6a9a6a;
-}
-
-.progress-badge.in-progress {
-  background: rgba(196,155,92,0.15);
-  color: #8a6a30;
-  border: 1px solid var(--gold);
-}
-
-/* =====================================
-   如何玩
-   ===================================== */
-.how-to-play {
-  margin-bottom: 32px;
-}
-
-.how-to-play-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.how-to-play-icon {
-  font-size: 18px;
-  color: var(--gold);
-}
-
-.how-to-play-header h2 {
-  font-size: 18px;
-  letter-spacing: 2px;
-  color: var(--ink);
-}
-
-.how-to-play-line {
-  flex: 1;
-  height: 1px;
-  background: var(--folder-dark);
-  margin-left: 8px;
-}
-
-.how-to-play-steps {
-  display: flex;
-  align-items: stretch;
-  gap: 8px;
-  background: rgba(255,253,246,0.5);
-  border: 1px solid var(--folder-dark);
-  border-radius: 4px;
-  padding: 24px 20px;
-  box-shadow: 2px 3px 0 var(--shadow-soft);
-}
-
-.how-to-play-step {
-  flex: 1;
-  text-align: center;
-  padding: 16px 12px;
-  position: relative;
-}
-
-.step-number {
-  font-family: "Courier Prime", monospace;
-  font-size: 11px;
-  letter-spacing: 1px;
-  color: var(--gold);
-  margin-bottom: 8px;
-}
-
-.step-icon {
-  font-size: 28px;
-  margin-bottom: 10px;
-  display: block;
-}
-
-.step-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 6px;
-}
-
-.step-desc {
-  font-size: 13px;
-  color: var(--ink-soft);
-  line-height: 1.6;
-}
-
-.how-to-play-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--folder-dark);
-  font-size: 20px;
-  padding: 0 4px;
-  align-self: center;
-}
-
-/* =====================================
-   案件分类统计
-   ===================================== */
-.category-stats {
-  margin-bottom: 32px;
-}
-
-.category-stats-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.category-stats-icon {
-  font-size: 18px;
-  color: var(--gold);
-}
-
-.category-stats-header h2 {
-  font-size: 18px;
-  letter-spacing: 2px;
-  color: var(--ink);
-}
-
-.category-stats-line {
-  flex: 1;
-  height: 1px;
-  background: var(--folder-dark);
-  margin-left: 8px;
-}
-
-.category-list {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.category-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--folder);
-  border: 1px solid var(--folder-dark);
-  border-radius: 4px;
-  padding: 10px 16px;
-  font-family: "Courier Prime", monospace;
-  font-size: 13px;
-  letter-spacing: 0.5px;
-  color: var(--ink-soft);
-  box-shadow: 1px 2px 0 var(--shadow-soft);
-}
-
-.category-item .category-count {
-  font-weight: 700;
-  color: var(--red);
-}
-
-/* =====================================
-   筛选栏
+   筛选栏 — 档案标签样式
    ===================================== */
 .filter-bar {
   display: flex;
@@ -665,7 +370,7 @@ body::after {
 }
 
 /* =====================================
-   故事卡片
+   故事卡片 — 档案文件夹样式
    ===================================== */
 .story-list {
   display: grid;
@@ -734,7 +439,6 @@ body::after {
   color: #6a7a5a;
   background: rgba(138,154,122,0.08);
 }
-
 .story-card {
   position: relative;
   background-color: var(--folder);
@@ -771,6 +475,7 @@ body::after {
   color: var(--ink-soft);
 }
 
+/* 右下角折痕装饰 — 替换之前的圆形 */
 .story-card::after {
   content: "";
   position: absolute;
@@ -838,6 +543,7 @@ body::after {
   flex: 1;
 }
 
+/* 左右分栏 60/40 */
 .game-body {
   display: grid;
   grid-template-columns: 3fr 2fr;
@@ -850,7 +556,7 @@ body::after {
   min-width: 0;
 }
 
-/* 汤面区域 */
+/* 汤面区域 — 文件夹文档样式 */
 .surface {
   position: relative;
   margin-bottom: 20px;
@@ -899,47 +605,7 @@ body::after {
   color: var(--ink);
 }
 
-/* =====================================
-   游戏状态栏
-   ===================================== */
-.game-status-bar {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 16px;
-  padding: 12px 16px;
-  background: var(--folder);
-  border: 1px solid var(--folder-dark);
-  border-radius: 4px;
-  box-shadow: 1px 2px 0 var(--shadow-soft);
-}
-
-.status-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: "Courier Prime", monospace;
-  font-size: 13px;
-  color: var(--ink-soft);
-}
-
-.status-icon {
-  font-size: 14px;
-}
-
-.status-label {
-  font-size: 12px;
-  letter-spacing: 0.5px;
-}
-
-.status-value {
-  font-weight: 700;
-  color: var(--red);
-  font-size: 14px;
-}
-
-/* =====================================
-   聊天区域
-   ===================================== */
+/* 聊天区域 */
 .chat {
   flex: 1;
   min-height: 220px;
@@ -979,22 +645,7 @@ body::after {
   font-family: "Courier Prime", "Courier New", monospace;
 }
 
-.message-timestamp {
-  font-family: "Courier Prime", monospace;
-  font-size: 10px;
-  color: var(--folder-dark);
-  margin-top: 6px;
-  opacity: 0.7;
-  text-align: right;
-}
-
-.message.assistant .message-timestamp {
-  text-align: left;
-}
-
-/* =====================================
-   输入区域
-   ===================================== */
+/* 输入区域 */
 .input-area {
   padding: 18px 0;
   border-top: 1px dashed var(--folder-dark);
@@ -1013,11 +664,6 @@ body::after {
   outline: none;
   transition: border-color 0.2s;
   color: var(--ink);
-}
-
-.input-area input::placeholder {
-  color: var(--folder-dark);
-  font-style: italic;
 }
 
 .input-area input:focus {
@@ -1070,7 +716,7 @@ body::after {
 }
 
 /* =====================================
-   右侧：侦探笔记板
+   右侧：侦探笔记板（软木板）
    ===================================== */
 .right {
   min-width: 0;
@@ -1173,102 +819,11 @@ body::after {
 .clue:nth-child(3n+3) { background: #C8E6C9; transform: rotate(-0.5deg); }
 
 /* =====================================
-   提示系统
-   ===================================== */
-.hint-section {
-  position: relative;
-  margin-top: 20px;
-  padding: 18px 14px;
-  background: rgba(255,253,246,0.15);
-  border: 2px dashed rgba(196,155,92,0.4);
-  border-radius: 4px;
-  text-align: center;
-  z-index: 1;
-}
-
-.hint-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-
-.hint-icon {
-  font-size: 16px;
-}
-
-.hint-title {
-  font-family: "Courier Prime", monospace;
-  font-size: 13px;
-  letter-spacing: 1px;
-  color: var(--gold);
-}
-
-.hint-status {
-  font-size: 12px;
-  color: var(--ink-soft);
-  margin-bottom: 10px;
-  font-style: italic;
-}
-
-.hint-btn {
-  padding: 8px 18px;
-  background: var(--gold);
-  color: var(--paper);
-  border: none;
-  border-bottom: 3px solid #A07A3A;
-  font-family: "Courier Prime", monospace;
-  font-size: 12px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  border-radius: 2px;
-}
-
-.hint-btn:hover:not(:disabled) {
-  background: #B08A4A;
-  transform: translateY(1px);
-}
-
-.hint-btn:disabled {
-  background: var(--folder-dark);
-  border-bottom-color: var(--folder);
-  cursor: not-allowed;
-  color: var(--ink-soft);
-  transform: none;
-}
-
-.hint-display {
-  margin-top: 12px;
-  padding: 14px 12px;
-  background: rgba(255,253,246,0.9);
-  border: 1px solid var(--gold);
-  border-radius: 4px;
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--ink);
-  text-align: left;
-  font-family: "Noto Serif SC", serif;
-  animation: fadeIn 0.4s ease;
-}
-
-.hint-display::before {
-  content: "提示";
-  display: block;
-  font-family: "Courier Prime", monospace;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--gold);
-  margin-bottom: 6px;
-}
-
-/* =====================================
    揭开汤底区域
    ===================================== */
 .answer-section {
   position: relative;
-  margin-top: 20px;
+  margin-top: 24px;
   padding: 22px 16px;
   background: rgba(255,253,246,0.1);
   border: 2px dashed rgba(255,253,246,0.3);
@@ -1382,105 +937,6 @@ body::after {
 }
 
 /* =====================================
-   放弃按钮
-   ===================================== */
-.give-up-btn {
-  display: block;
-  width: 100%;
-  margin-top: 16px;
-  padding: 10px 16px;
-  background: transparent;
-  color: var(--ink-soft);
-  border: 1px dashed var(--folder-dark);
-  font-family: "Courier Prime", monospace;
-  font-size: 12px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all var(--transition-speed) ease;
-  border-radius: 2px;
-  position: relative;
-  z-index: 1;
-}
-
-.give-up-btn:hover {
-  border-color: var(--red);
-  color: var(--red);
-  border-style: solid;
-  background: rgba(139,38,53,0.04);
-}
-
-/* =====================================
-   页面过渡动画
-   ===================================== */
-.page-transition {
-  position: fixed;
-  inset: 0;
-  background: var(--paper);
-  z-index: 100;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.page-transition.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.page {
-  animation: pageEnter 0.4s ease;
-}
-
-@keyframes pageEnter {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* =====================================
-   加载状态增强
-   ===================================== */
-.loading-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(245,240,230,0.85);
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 16px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.loading-overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid var(--folder-dark);
-  border-top-color: var(--red);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-.loading-text {
-  font-family: "Courier Prime", monospace;
-  font-size: 14px;
-  letter-spacing: 1px;
-  color: var(--ink-soft);
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* =====================================
    动画 Keyframes
    ===================================== */
 @keyframes fadeIn {
@@ -1530,19 +986,6 @@ body::after {
   .game-body {
     grid-template-columns: 1fr 300px;
   }
-  .featured-list {
-    grid-template-columns: 1fr;
-  }
-  .how-to-play-steps {
-    flex-wrap: wrap;
-  }
-  .how-to-play-step {
-    min-width: 140px;
-    flex: 1 1 40%;
-  }
-  .how-to-play-arrow {
-    display: none;
-  }
 }
 
 @media (max-width: 860px) {
@@ -1563,13 +1006,6 @@ body::after {
     width: 100%;
     justify-content: center;
   }
-  .stats-panel {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .game-status-bar {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
 }
 
 @media (max-width: 520px) {
@@ -1585,52 +1021,19 @@ body::after {
   .intro-paper { padding: 20px 18px 20px 28px; }
   .surface-inner { padding: 20px 18px; }
   .filter-group { min-width: 100px; }
-  .stats-panel {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  .stats-card {
-    padding: 14px 10px;
-  }
-  .stats-number {
-    font-size: 24px;
-  }
-  .how-to-play-steps {
-    flex-direction: column;
-    gap: 16px;
-  }
-  .how-to-play-arrow {
-    display: none;
-  }
-  .how-to-play-step {
-    flex: none;
-  }
-  .featured-list {
-    grid-template-columns: 1fr;
-  }
-  .game-status-bar {
-    justify-content: space-between;
-  }
-  .status-item {
-    font-size: 11px;
-  }
-  .status-value {
-    font-size: 12px;
-  }
 }
 
 @media (max-width: 400px) {
   .story-list { gap: 18px; }
   .filter-option { font-size: 12px; padding: 5px 10px; }
   .container { margin: 8px auto; min-height: calc(100vh - 16px); }
-  .stats-panel {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 /* =====================================
    筛选标签颜色匹配
    ===================================== */
+
+/* 类型颜色 — 与 card-tag 保持一致 */
 .filter-option-type-红汤.active {
   border-color: var(--red);
   color: var(--red);
@@ -1652,6 +1055,7 @@ body::after {
   box-shadow: 0 0 0 1px #8a6ab5;
 }
 
+/* 恐怖程度颜色 */
 .filter-option-horror-重恐.active {
   border-color: #9a1a1a;
   color: #9a1a1a;
@@ -1680,6 +1084,7 @@ body::after {
   box-shadow: 0 0 0 1px #8a9a7a;
 }
 
+/* 难度颜色 — 统一底色透明，匹配各自风格 */
 .filter-option-difficulty-简单.active {
   border-color: #6a9a6a;
   color: #4a7a4a;
@@ -1701,6 +1106,7 @@ body::after {
   box-shadow: 0 0 0 1px var(--red);
 }
 
+/* 卡片难度标签统一加透明底色，和其他标签风格一致 */
 .card-tag.difficulty-简单 {
   border-color: #6a9a6a;
   color: #4a7a4a;
@@ -1719,6 +1125,7 @@ body::after {
   background: rgba(139,38,53,0.08);
 }
 
+/* 游戏页标签 */
 .game-tags {
   display: flex;
   gap: 6px;
@@ -1738,6 +1145,7 @@ body::after {
   text-transform: uppercase;
 }
 
+/* 游戏页标签颜色 — 与 card-tag 保持一致 */
 .game-tag-type-红汤,
 .game-tag-horror-重恐,
 .game-tag-difficulty-困难 {
